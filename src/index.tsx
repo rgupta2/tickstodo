@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import CounterList from './components/CounterList';
-import { reducer } from './components/CounterReducer'
+import { reducer } from './redux-modules/CounterReducer'
 
 let store = createStore(reducer, { list: [0] });
 

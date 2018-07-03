@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CounterActionTypes } from "./CounterAction";
-import { CounterState } from "./CounterReducer";
+import { CounterActionTypes } from "../redux-modules/CounterAction";
+import { CounterState } from "../redux-modules/CounterReducer";
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state: CounterState) => state;
