@@ -3,14 +3,14 @@ import * as ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import CounterList from './components/CounterList';
-import { reducer } from './redux-modules/CounterReducer'
+import TodoApp from './components/TodoApp';
+import { reducer } from './redux-modules/TodoReducer'
 
-let store = createStore(reducer, { list: [0] });
+let store = createStore(reducer, {todos: [], visibilityFilter: ''});
 
 ReactDOM.render(
     <Provider store={store}>
-        <CounterList />
+        <TodoApp />
     </Provider>,
     document.getElementById('root'),
 );
