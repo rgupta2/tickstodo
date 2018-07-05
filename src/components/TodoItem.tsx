@@ -5,10 +5,7 @@ import * as styles from './css/styles.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
-// import { faCheckCircle, faCircle, faTrash } from '@fortawesome/free-solid-svg-icons'
 
-// library.add(faCircle);
-// library.add(faCheckCircle);
 library.add(faCheckSquare);
 library.add(faSquare);
 library.add(faTrash);
