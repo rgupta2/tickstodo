@@ -1,19 +1,18 @@
-import * as React from 'react';
-import { TodoItem } from './TodoItem';
-import { ITodo } from '../entities/ITodo';
-import * as styles from './css/styles.css';
+import * as React from "react";
+import { ITodo } from "../entities/ITodo";
+import * as styles from "./css/styles.css";
+import { TodoItem } from "./TodoItem";
 
 interface IProps {
-    todos: Array<ITodo>,
-    onTodoClick: Function,
-    onTrashClick: Function,
+    todos: ITodo[];
+    onTodoClick: Function;
+    onTrashClick: Function;
 }
 
 export const TodoList = (props: IProps) => {
     return (
         <div className={styles.reminders}>
             {props.todos.map((todo: ITodo) => {
-                console.log('TodoList.props', props);
                 return (
                     <TodoItem
                         key={todo.id}
@@ -21,7 +20,7 @@ export const TodoList = (props: IProps) => {
                         onItemClick={() => props.onTodoClick(todo.id)}
                         onTrashClick={() => props.onTrashClick(todo.id)}
                     />
-                )
+                );
             })}
         </div>
     );

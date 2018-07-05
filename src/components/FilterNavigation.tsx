@@ -1,18 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
+import * as styles from "./css/styles.css";
 import { Filter } from "./Filter";
-import * as styles from './css/styles.css';
 
 interface IProps {
-    visibilityFilter: string,
-    onFilterClick: Function
+    visibilityFilter: string;
+    onFilterClick: Function;
 }
 
 export const FilterNavigation = (props: IProps) => {
-    const filters: Array<string> = ['ALL', 'ACTIVE', 'COMPLETED'];
+    const filters: string[] = ["ALL", "ACTIVE", "COMPLETED"];
 
     return (
         <div className={styles.filterNav}>
-            {filters.map((filter: string)=> { return (
+            {filters.map((filter: string) => { return (
             <div className={styles.filterNavItem}>
                 <Filter
                     key={filter}
