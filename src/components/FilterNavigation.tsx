@@ -7,7 +7,12 @@ interface IProps {
     onFilterClick: Function;
 }
 
-export const FilterNavigation = (props: IProps) => {
+export class FilterNavigation extends React.Component<any, any> {
+    public shouldComponentUpdate(nextProps: IProps) {
+        return this.props.visibilityFilter !== nextProps.visibilityFilter;
+    }
+
+    public render() {
     const filters: string[] = ["ALL", "ACTIVE", "COMPLETED"];
 
     return (
@@ -17,11 +22,12 @@ export const FilterNavigation = (props: IProps) => {
                 <Filter
                     key={filter}
                     filter={filter}
-                    currentFilter={props.visibilityFilter}
-                    onLinkClick={props.onFilterClick}>
+                    currentFilter={this.props.visibilityFilter}
+                    onLinkClick={this.props.onFilterClick}>
                     {filter}
                 </Filter>
             </div>);
         })}
         </div>);
-};
+    }
+}

@@ -15,7 +15,7 @@ export const Filter = (props: any) => {
                 className={styles.filterNavItemLink + " " + styles.filterNavItemActive}
                 href="#" onClick={(e) => {e.preventDefault(); props.onLinkClick(props.filter); }}>
                 {props.children}
-                </a>
+            </a>
         );
     }
 
@@ -25,6 +25,6 @@ export const Filter = (props: any) => {
             href="#"
             onClick={(e) => {e.preventDefault(); props.onLinkClick(props.filter); }}>
             {props.children}
-            </a>
+        </a>
     );
 };

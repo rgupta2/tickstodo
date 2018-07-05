@@ -18,22 +18,29 @@ interface IProps {
     onTrashClick(): void;
 }
 
-export const TodoItem = (props: IProps) => {
-    let styleClasses = classNames.bind(styles);
-    let textClassName: string = styles.item + (props.completed ? " " + styles.completed : "");
-    if (props.completed) {
-        return (
-            <div className={textClassName} onClick={props.onItemClick}>
-                <span className={styles.iconBox}><FontAwesomeIcon icon="check-square"/></span>
-                {props.text}
-            </div>);
-    } else {
-        return (<div className={textClassName} onClick={props.onItemClick}>
-            <span className={styles.iconBox}><FontAwesomeIcon icon="square"/></span>
-            {props.text}
-            <span className={styles.iconTrash} onClick={props.onTrashClick}>
-                <FontAwesomeIcon icon="trash"/>
-            </span>
-        </div>);
+export class TodoItem extends React.Component<any, any> {
+    public shouldComponentUpdate(nextProps: IProps) {
+        return this.props.completed !== nextProps.completed ||
+            this.props.text !== nextProps.text;
     }
-};
+
+    public render() {
+        let styleClasses = classNames.bind(styles);
+        let textClassName: string = styles.item + (this.props.completed ? " " + styles.completed : "");
+        if (this.props.completed) {
+            return (
+                <div className={textClassName} onClick={this.props.onItemClick}>
+                    <span className={styles.iconBox}><FontAwesomeIcon icon="check-square"/></span>
+                    {this.props.text}
+                </div>);
+        } else {
+            return (<div className={textClassName} onClick={this.props.onItemClick}>
+                <span className={styles.iconBox}><FontAwesomeIcon icon="square"/></span>
+                {this.props.text}
+                <span className={styles.iconTrash} onClick={this.props.onTrashClick}>
+                    <FontAwesomeIcon icon="trash"/>
+                </span>
+            </div>);
+        }
+    }
+}

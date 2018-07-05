@@ -9,19 +9,25 @@ interface IProps {
     onTrashClick: Function;
 }
 
-export const TodoList = (props: IProps) => {
-    return (
-        <div className={styles.reminders}>
-            {props.todos.map((todo: ITodo) => {
-                return (
-                    <TodoItem
-                        key={todo.id}
-                        {...todo}
-                        onItemClick={() => props.onTodoClick(todo.id)}
-                        onTrashClick={() => props.onTrashClick(todo.id)}
-                    />
-                );
-            })}
-        </div>
-    );
-};
+export class TodoList extends React.Component<any, any> {
+    public shouldComponentUpdate(nextProps: IProps) {
+        return this.props.todos !== nextProps.todos;
+    }
+
+    public render() {
+        return (
+            <div className={styles.reminders}>
+                {this.props.todos.map((todo: ITodo) => {
+                    return (
+                        <TodoItem
+                            key={todo.id}
+                            {...todo}
+                            onItemClick={() => this.props.onTodoClick(todo.id)}
+                            onTrashClick={() => this.props.onTrashClick(todo.id)}
+                        />
+                    );
+                })}
+            </div>
+        );
+    }
+}

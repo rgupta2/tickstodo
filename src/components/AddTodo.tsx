@@ -10,22 +10,30 @@ interface IProps {
     onAddClick: Function;
 }
 
-export const AddTodo = (props: IProps) => {
-    let input: any;
-    return (
-        <div className={styles.addTodo}>
-            <input
-                className={ styles.tInputText }
-                ref={ (node) => { input = node; } }/>
-            <button
-                className={ styles.tInputSubmit }
-                type="submit" onClick={() => {
+export class AddTodo extends React.Component<any, any> {
+    public render() {
+        let input: any;
+        return (
+            <div className={styles.addTodo}>
+                <input
+                    className={styles.tInputText}
+                    ref={(node) => {
+                        input = node;
+                    }}/>
+                <button
+                    className={styles.tInputSubmit}
+                    type="submit" onClick={() => {
                     if (input.value) {
-                        props.onAddClick(input.value);
+                        this.props.onAddClick(input.value);
                     }
                 }
                 }>
-                <FontAwesomeIcon icon="plus" />
-            </button>
-        </div>);
-};
+                    <FontAwesomeIcon icon="plus"/>
+                </button>
+            </div>);
+    }
+
+    public shouldComponentUpdate() {
+        return false;
+    }
+}
