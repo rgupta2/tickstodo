@@ -5,7 +5,8 @@ import * as styles from './css/styles.css';
 
 interface IProps {
     todos: Array<ITodo>,
-    onTodoClick: Function
+    onTodoClick: Function,
+    onTrashClick: Function,
 }
 
 export const TodoList = (props: IProps) => {
@@ -17,7 +18,8 @@ export const TodoList = (props: IProps) => {
                     <TodoItem
                         key={todo.id}
                         {...todo}
-                        onItemClick={ () => props.onTodoClick(todo.id) }
+                        onItemClick={() => props.onTodoClick(todo.id)}
+                        onTrashClick={() => props.onTrashClick(todo.id)}
                     />
                 )
             })}

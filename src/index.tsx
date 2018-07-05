@@ -6,11 +6,14 @@ import { Provider } from 'react-redux';
 import TodoApp from './components/TodoApp';
 import { reducer } from './reducers/TodoReducer'
 
-let store = createStore(reducer, {todos: [], visibilityFilter: ''});
+let store = createStore(
+    reducer,
+    {todos: [], visibilityFilter: ''}
+);
 
 ReactDOM.render(
     <Provider store={store}>
-        <TodoApp />
+        <TodoApp key="todoapp" />
     </Provider>,
     document.getElementById('root'),
 );

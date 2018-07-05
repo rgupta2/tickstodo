@@ -18,6 +18,10 @@ export const reducer: Reducer<TodoState> = (state: TodoState , action: TodoActio
                 completed: false
             }]};
 
+        case TodoActionTypes.REMOVE_TODO:
+            return { ...state,
+                todos: state.todos.filter((todo) => todo.id !== action.id)};
+
         case TodoActionTypes.TOGGLE_TODO:
             return {...state,
                 todos: state.todos.map(todo => {

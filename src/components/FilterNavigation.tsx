@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FilterLink } from "./FilterLink";
+import { Filter } from "./Filter";
 import * as styles from './css/styles.css';
 
 interface IProps {
@@ -7,19 +7,20 @@ interface IProps {
     onFilterClick: Function
 }
 
-export const Footer = (props: IProps) => {
+export const FilterNavigation = (props: IProps) => {
     const filters: Array<string> = ['ALL', 'ACTIVE', 'COMPLETED'];
 
     return (
-        <div className={styles.filterNav} key="footer">
+        <div className={styles.filterNav}>
             {filters.map((filter: string)=> { return (
             <div className={styles.filterNavItem}>
-                <FilterLink
+                <Filter
+                    key={filter}
                     filter={filter}
                     currentFilter={props.visibilityFilter}
                     onLinkClick={props.onFilterClick}>
                     {filter}
-                </FilterLink>
+                </Filter>
             </div>);
         })}
         </div>);

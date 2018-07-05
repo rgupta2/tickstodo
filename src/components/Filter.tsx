@@ -8,7 +8,7 @@ interface IProps {
     onLinkClick: Function
 }
 
-export const FilterLink = (props: any) => {
+export const Filter = (props: any) => {
     if (props.filter === props.currentFilter) {
         return (
             <a className={styles.filterNavItemLink + ' ' + styles.filterNavItemActive} href='#' onClick={e => {e.preventDefault(); props.onLinkClick(props.filter)}}>{props.children}</a>

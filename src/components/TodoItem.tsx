@@ -14,7 +14,8 @@ interface IProps {
     id: number,
     completed: boolean,
     text: string,
-    onItemClick: Function
+    onItemClick(): void,
+    onTrashClick(): void
 }
 
 export const TodoItem = (props: IProps) => {
@@ -24,15 +25,17 @@ export const TodoItem = (props: IProps) => {
     let iconClassName: string = props.completed?"check-square": "square";
     if (props.completed) {
         return (
-            <div className={textClassName} onClick={() => props.onItemClick()}>
+            <div className={textClassName} onClick={props.onItemClick}>
                 <span className={styles.iconBox}><FontAwesomeIcon icon="check-square"/></span>
                 {props.text}
             </div>);
     } else {
-        return (<div className={textClassName} onClick={() => props.onItemClick()}>
+        return (<div className={textClassName} onClick={props.onItemClick}>
             <span className={styles.iconBox}><FontAwesomeIcon icon="square"/></span>
             {props.text}
-            <span className={styles.iconTrash}><FontAwesomeIcon icon="trash"/></span>
+            <span className={styles.iconTrash} onClick={props.onTrashClick}>
+                <FontAwesomeIcon icon="trash"/>
+            </span>
         </div>);
     }
 };
