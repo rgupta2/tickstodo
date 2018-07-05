@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { TodoAction, TodoActionTypes } from "./TodoAction";
+import { TodoAction, TodoActionTypes } from "../actions/TodoAction";
 import { ITodo } from "../entities/ITodo";
 
 export interface TodoState {

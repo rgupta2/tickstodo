@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TodoItem } from './TodoItem';
 import { ITodo } from '../entities/ITodo';
+import * as styles from './css/styles.css';
 
 interface IProps {
     todos: Array<ITodo>,
@@ -9,7 +10,7 @@ interface IProps {
 
 export const TodoList = (props: IProps) => {
     return (
-        <ul>
+        <div className={styles.reminders}>
             {props.todos.map((todo: ITodo) => {
                 console.log('TodoList.props', props);
                 return (
@@ -20,6 +21,6 @@ export const TodoList = (props: IProps) => {
                     />
                 )
             })}
-        </ul>
+        </div>
     );
 };

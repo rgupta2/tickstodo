@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import TodoApp from './components/TodoApp';
-import { reducer } from './redux-modules/TodoReducer'
+import { reducer } from './reducers/TodoReducer'
 
 let store = createStore(reducer, {todos: [], visibilityFilter: ''});
 

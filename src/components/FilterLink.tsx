@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as styles from './css/styles.css';
 
 // TODO: Figure out how to specify type for children
 interface IProps {
@@ -9,10 +10,12 @@ interface IProps {
 
 export const FilterLink = (props: any) => {
     if (props.filter === props.currentFilter) {
-        return (<span> {props.children} </span>);
+        return (
+            <a className={styles.filterNavItemLink + ' ' + styles.filterNavItemActive} href='#' onClick={e => {e.preventDefault(); props.onLinkClick(props.filter)}}>{props.children}</a>
+        );
     }
 
     return (
-        <a href='#' onClick={e => {e.preventDefault(); props.onLinkClick(props.filter)}}>{props.children}</a>
+        <a className={styles.filterNavItemLink} href='#' onClick={e => {e.preventDefault(); props.onLinkClick(props.filter)}}>{props.children}</a>
     );
 };

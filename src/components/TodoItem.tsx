@@ -1,4 +1,17 @@
 import * as React from 'react';
+import * as classNames from 'classnames';
+import * as styles from './css/styles.css';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckSquare, faSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+// import { faCheckCircle, faCircle, faTrash } from '@fortawesome/free-solid-svg-icons'
+
+// library.add(faCircle);
+// library.add(faCheckCircle);
+library.add(faCheckSquare);
+library.add(faSquare);
+library.add(faTrash);
 
 interface IProps {
     id: number,
@@ -8,13 +21,21 @@ interface IProps {
 }
 
 export const TodoItem = (props: IProps) => {
-    return (
-        <li
-            onClick={() => props.onItemClick()}
-            style={{
-                textDecoration: props.completed? 'line-through': 'none'
-            }}
-        >
+    let styleClasses = classNames.bind(styles);
+    console.log('TodoItem: ', props);
+    let textClassName: string = styles.item + (props.completed?' ' + styles.completed: '');
+    let iconClassName: string = props.completed?"check-square": "square";
+    if (props.completed) {
+        return (
+            <div className={textClassName} onClick={() => props.onItemClick()}>
+                <span className={styles.iconBox}><FontAwesomeIcon icon="check-square"/></span>
+                {props.text}
+            </div>);
+    } else {
+        return (<div className={textClassName} onClick={() => props.onItemClick()}>
+            <span className={styles.iconBox}><FontAwesomeIcon icon="square"/></span>
             {props.text}
-        </li>);
+            <span className={styles.iconTrash}><FontAwesomeIcon icon="trash"/></span>
+        </div>);
+    }
 };

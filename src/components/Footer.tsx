@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FilterLink } from "./FilterLink";
+import * as styles from './css/styles.css';
 
 interface IProps {
     visibilityFilter: string,
@@ -7,27 +8,19 @@ interface IProps {
 }
 
 export const Footer = (props: IProps) => {
+    const filters: Array<string> = ['ALL', 'ACTIVE', 'COMPLETED'];
+
     return (
-        <p key="footer">
-            <FilterLink
-            filter='SHOW_ALL'
-            currentFilter={props.visibilityFilter}
-            onLinkClick={props.onFilterClick}>
-                ALL
-            </FilterLink>
-            {', '}
-            <FilterLink
-                filter='SHOW_ACTIVE'
-                currentFilter={props.visibilityFilter}
-                onLinkClick={props.onFilterClick}>
-                ACTIVE
-            </FilterLink>
-            {', '}
-            <FilterLink
-                filter='SHOW_COMPLETED'
-                currentFilter={props.visibilityFilter}
-                onLinkClick={props.onFilterClick}>
-                Completed
-            </FilterLink>
-        </p>);
+        <div className={styles.filterNav} key="footer">
+            {filters.map((filter: string)=> { return (
+            <div className={styles.filterNavItem}>
+                <FilterLink
+                    filter={filter}
+                    currentFilter={props.visibilityFilter}
+                    onLinkClick={props.onFilterClick}>
+                    {filter}
+                </FilterLink>
+            </div>);
+        })}
+        </div>);
 };

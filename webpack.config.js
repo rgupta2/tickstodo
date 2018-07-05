@@ -26,32 +26,27 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', "typings-for-css-modules-loader?namedExport&modules"]
-          // ExtractTextPlugin.extract({ use: 'typings-for-css-modules-loader?minimize&namedExport&modules' })
+        'use': [ 'style-loader',
+          {
+            'loader': 'typings-for-css-modules-loader',
+            'options': {
+              camelCase: true,
+              modules: true,
+              namedExport: true
+            }
+          }
+          ]
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         use: 'url-loader?limit=1000'
       }
-      // {
-      //   test: /\.css$/,
-      //   exclude: /(node_modules)/,
-      //   use: [{ loader: "style-loader" }, { loader: "css-loader" }]
-      // },
-      // {
-      //   test: /\.html$/,
-      //   use: [
-      //     {
-      //       loader: "html-loader"
-      //     }
-      //   ]
-      // }
     ]
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
-      filename: "./index.html"
+        filename: "./index.html"
     })
   ]
 };

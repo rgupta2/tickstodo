@@ -5,10 +5,22 @@ import { AddTodo } from "./AddTodo";
 import { TodoList } from './TodoList';
 import { Footer } from './Footer';
 import { ITodo } from "../entities/ITodo";
-import { TodoActionTypes } from '../redux-modules/TodoAction';
-import { TodoState } from '../redux-modules/TodoReducer';
+import { TodoActionTypes } from '../actions/TodoAction';
+import { TodoState } from '../reducers/TodoReducer';
+import * as styles from './css/styles.css';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faCheckSquare, faCheckCircle, faSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
+
+// import {faTwitter, faLinkedin, faGithub} from '@fortawesome/fontawesome-free-brands';
 
 let nextTodoId = 0;
+library.add(faCheck);
+library.add(faCheckCircle);
+library.add(faCheckSquare);
+library.add(faSquare);
+library.add(faTrash);
 
 const mapStateToProps = (state: TodoState) => state;
 
@@ -31,11 +43,11 @@ const getVisibleTodos = (
     filter: string
 ) => {
     switch(filter) {
-        case 'SHOW_ALL':
+        case 'ALL':
             return todos;
-        case 'SHOW_COMPLETED':
+        case 'COMPLETED':
             return todos.filter(t => t.completed);
-        case 'SHOW_ACTIVE':
+        case 'ACTIVE':
             return todos.filter(t => !t.completed);
         default:
             return todos;
@@ -49,16 +61,20 @@ class TodoApp extends React.Component<any, any> {
             this.props.visibilityFilter);
         return (
             <div>
-                <AddTodo onAddClick={(text: string) => {
-                    this.props.addTodo(nextTodoId++, text);
-                }}/>
+                <div className={styles.pageHeader}>
+                    <div className={styles.filterNavItem}>
+                        TICKS TO DO</div>
+                    <Footer visibilityFilter={this.props.visibilityFilter} onFilterClick={(filter: string) => {this.props.setVisibilityFilter(filter); }} />
+                </div>
 
-            <TodoList todos={visibleTodos} onTodoClick={(index: number) => {
-                console.log('onTodoClick', index); this.props.toggleTodo(index); }} />
-
-            <Footer visibilityFilter={this.props.visibilityFilter} onFilterClick={(filter: string) => {this.props.setVisibilityFilter(filter); }} />
-    </div>
-
+                <div className={styles.reminderContainer}>
+                    <AddTodo onAddClick={(text: string) => {
+                        this.props.addTodo(nextTodoId++, text);
+                    }}/>
+                    <TodoList todos={visibleTodos} onTodoClick={(index: number) => {
+                        this.props.toggleTodo(index); }} />
+                </div>
+            </div>
         );
     }
 }
