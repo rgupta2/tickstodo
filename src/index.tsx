@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { store } from "./store/store";
 import TodoApp from "./components/TodoApp";
+import store from "./store/store";
 
 ReactDOM.render(
     <Provider store={store}>
