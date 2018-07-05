@@ -1,15 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-
+import { store } from "./store/store";
 import TodoApp from "./components/TodoApp";
-import { reducer } from "./reducers/TodoReducer";
-
-let store = createStore(
-    reducer,
-    {todos: [], visibilityFilter: ""},
-);
 
 ReactDOM.render(
     <Provider store={store}>
