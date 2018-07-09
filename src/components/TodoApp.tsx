@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { TodoActionTypes } from "../actions/TodoAction";
 import { ITodo } from "../entities/ITodo";
-import { ITodoState } from "../reducers/TodoReducer";
+import { ITodoState } from "../reducers/TodoAppReducer";
 import { AddTodo } from "./AddTodo";
 import * as styles from "./css/styles.css";
 import { TodoList } from "./TodoList";

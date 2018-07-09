@@ -1,10 +1,9 @@
 
 import { createStore } from "redux";
-import { reducer } from "../reducers/TodoReducer";
+import { todoAppReducer } from "../reducers/TodoAppReducer";
 
 let store = createStore(
-    reducer,
-    {todos: [], visibilityFilter: ""},
+    todoAppReducer
 );
 
 export default store;
