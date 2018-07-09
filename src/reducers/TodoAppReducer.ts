@@ -1,7 +1,7 @@
 import { Reducer, combineReducers } from "redux";
 import { ITodo } from "../entities/ITodo";
 import todoListReducer from './TodoListReducer';
-import {filterReducer} from "./FilterReducer";
+import filterReducer from "./FilterReducer";
 
 
 export interface ITodoState {
