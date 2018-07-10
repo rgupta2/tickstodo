@@ -1,30 +1,57 @@
 
-export enum TodoActionTypes {
-    ADD_TODO = "ADD_TODO",
-    REMOVE_TODO = "REMOVE_TODO",
-    TOGGLE_TODO = "TOGGLE_TODO",
-    SET_VISIBLITY_FILTER = "SET_VISIBLITY_FILTER",
-}
+import * as React from "react";
+import actionCreatorFactory from 'typescript-fsa';
 
-export interface IAddTodoAction {
-    type: TodoActionTypes.ADD_TODO;
-    id: number;
-    text: string;
-}
+const actionCreator = actionCreatorFactory();
 
-export interface IRemoveTodoAction {
-    type: TodoActionTypes.REMOVE_TODO;
-    id: number;
-}
+// Specify payload shape as generic type argument.
+const IAddTodoAction = actionCreator<{id: number, text: string}>('ADD_TODO');
 
-export interface IToggleTodoAction {
-    type: TodoActionTypes.TOGGLE_TODO;
-    id: number;
-}
+const IRemoveTodoAction = actionCreator<{id: number}>('REMOVE_TODO');
 
-export interface ISetVisibilityFilterAction {
-    type: TodoActionTypes.SET_VISIBLITY_FILTER;
-    filter: string;
-}
+const IToggleTodoAction = actionCreator<{id: number}>('TOGGLE_TODO');
 
-export type TodoAction = IAddTodoAction | IRemoveTodoAction | IToggleTodoAction | ISetVisibilityFilterAction ;
+const ISetVisibilityFilterAction = actionCreator<{filter: string}>('SET_VISIBLITY_FILTER');
+
+
+let nextTodoId = 0;
+
+const addTodo = (text: string) => {
+    return {
+        payload: {
+            id: nextTodoId++,
+            text,
+        },
+        type: 'ADD_TODO',
+    };
+};
+
+const removeTodo = (index: number) => {
+    return {
+        payload: {
+            id: index,
+        },
+        type: 'REMOVE_TODO',
+    };
+};
+
+const setVisibilityFilter = (filter: string) => {
+    return {
+        payload: {
+            filter,
+        },
+        type: 'SET_VISIBLITY_FILTER',
+    };
+};
+
+const toggleTodo = (index: number) => {
+    return {
+        type: 'TOGGLE_TODO',
+        payload: {
+            id: index,
+        },
+    };
+};
+
+
+export { IAddTodoAction, IRemoveTodoAction, IToggleTodoAction, ISetVisibilityFilterAction, addTodo, removeTodo, setVisibilityFilter, toggleTodo };

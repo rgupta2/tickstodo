@@ -1,33 +1,31 @@
-import { Reducer } from "redux";
-import { TodoAction, TodoActionTypes } from "../actions/TodoAction";
+import { Reducer, Action } from "redux";
+import { IAddTodoAction, IRemoveTodoAction, IToggleTodoAction } from "../actions/TodoAction";
 import { ITodo } from "../entities/ITodo";
+import { isType } from "typescript-fsa";
 
 
-const todoListReducer: Reducer<ITodo[]> = (todos: ITodo[] = [] , action: TodoAction) => {
-    switch (action.type) {
-        case TodoActionTypes.ADD_TODO:
-            return [...todos, {
-                completed: false,
-                id: action.id,
-                text: action.text,
-            }];
+const todoListReducer: Reducer<ITodo[]> = (todos: ITodo[] = [] , action: Action) => {
+    console.log('==============', action);
+    if (isType(action, IAddTodoAction)) {
+        return [...todos, {
+            completed: false,
+            id: action.payload.id,
+            text: action.payload.text,
+        }];
+    } else if (isType(action, IRemoveTodoAction)) {
+        return todos.filter((todo) => todo.id !== action.payload.id);
+    } else if (isType(action, IToggleTodoAction)) {
+        return todos.map((todo) => {
+            if (todo.id !== action.payload.id) {
+                return todo;
+            }
 
-        case TodoActionTypes.REMOVE_TODO:
-            return todos.filter((todo) => todo.id !== action.id);
-
-        case TodoActionTypes.TOGGLE_TODO:
-            return todos.map((todo) => {
-                if (todo.id !== action.id) {
-                    return todo;
-                }
-
-                return {
-                    ...todo, completed: !todo.completed,
-                };
-            });
-
-        default:
-            return todos;
+            return {
+                ...todo, completed: !todo.completed,
+            };
+        });
+    } else {
+        return todos;
     }
 };
 

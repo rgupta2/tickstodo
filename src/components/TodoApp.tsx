@@ -6,7 +6,7 @@ import { ITodoState } from "../reducers/TodoAppReducer";
 import { AddTodo } from "./AddTodo";
 import * as styles from "./css/styles.css";
 import { TodoList } from "./TodoList";
-import { addTodo, toggleTodo, setVisibilityFilter, removeTodo } from "../actions/ActionCreators";
+import { addTodo, toggleTodo, setVisibilityFilter, removeTodo } from "../actions/TodoAction";
 
 import {FilterNavigation} from "./FilterNavigation";
 
