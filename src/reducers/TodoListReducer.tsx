@@ -3,7 +3,7 @@ import { TodoAction, TodoActionTypes } from "../actions/TodoAction";
 import { ITodo } from "../entities/ITodo";
 
 
-const todoListReducer: Reducer<ITodo[]> = (todos: ITodo[] , action: TodoAction) => {
+const todoListReducer: Reducer<ITodo[]> = (todos: ITodo[] = [] , action: TodoAction) => {
     switch (action.type) {
         case TodoActionTypes.ADD_TODO:
             return [...todos, {

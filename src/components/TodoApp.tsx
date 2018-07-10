@@ -12,7 +12,32 @@ import {FilterNavigation} from "./FilterNavigation";
 
 let nextTodoId = 0;
 
-const mapStateToProps = (state: ITodoState) => state;
+
+const getVisibleTodos = (
+    todos: ITodo[],
+    filter: string,
+) => {
+    switch (filter) {
+        case "ALL":
+            return todos;
+        case "COMPLETED":
+            return todos.filter((t) => t.completed);
+        case "ACTIVE":
+            return todos.filter((t) => !t.completed);
+        default:
+            return todos;
+    }
+};
+
+const mapStateToProps = (state: ITodoState) => {
+    const props = {
+        todos: getVisibleTodos(
+            state.todos,
+            state.visibilityFilter),
+        visibilityFilter: state.visibilityFilter
+    };
+    return props;
+};
 
 const mapDispatchToProps = (dispatch: any) => ({
     addTodo: (index: number, text: string) => {
@@ -39,27 +64,9 @@ const mapDispatchToProps = (dispatch: any) => ({
     },
 });
 
-const getVisibleTodos = (
-    todos: ITodo[],
-    filter: string,
-) => {
-    switch (filter) {
-        case "ALL":
-            return todos;
-        case "COMPLETED":
-            return todos.filter((t) => t.completed);
-        case "ACTIVE":
-            return todos.filter((t) => !t.completed);
-        default:
-            return todos;
-    }
-};
 
 class TodoApp extends React.Component<any, any> {
     public render() {
-        const visibleTodos = getVisibleTodos(
-            this.props.todos,
-            this.props.visibilityFilter);
         return (
             <div>
                 <div className={styles.pageHeader}>
@@ -79,7 +86,7 @@ class TodoApp extends React.Component<any, any> {
                     />
                     <TodoList
                         key="todoList"
-                        todos={visibleTodos}
+                        todos={this.props.todos}
                         onTodoClick={(index: number) => { this.props.toggleTodo(index); }}
                         onTrashClick={(index: number) => { this.props.removeTodo(index); }}/>
                 </div>
