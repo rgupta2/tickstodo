@@ -1,16 +1,14 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { TodoActionTypes } from "../actions/TodoAction";
 import { ITodo } from "../entities/ITodo";
 import { ITodoState } from "../reducers/TodoAppReducer";
 import { AddTodo } from "./AddTodo";
 import * as styles from "./css/styles.css";
 import { TodoList } from "./TodoList";
+import { addTodo, toggleTodo, setVisibilityFilter, removeTodo } from "../actions/ActionCreators";
 
 import {FilterNavigation} from "./FilterNavigation";
-
-let nextTodoId = 0;
 
 
 const getVisibleTodos = (
@@ -30,39 +28,17 @@ const getVisibleTodos = (
 };
 
 const mapStateToProps = (state: ITodoState) => {
-    const props = {
+    return {
         todos: getVisibleTodos(
             state.todos,
             state.visibilityFilter),
         visibilityFilter: state.visibilityFilter
     };
-    return props;
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
-    addTodo: (index: number, text: string) => {
-        dispatch({
-            id: index,
-            type: TodoActionTypes.ADD_TODO,
-            text,
-        });
-    },
-    removeTodo: (index: number) => {
-        dispatch({
-            id: index,
-            type: TodoActionTypes.REMOVE_TODO,
-        });
-    },
-    setVisibilityFilter: (filter: string) => {
-        dispatch({
-            filter,
-            type: TodoActionTypes.SET_VISIBLITY_FILTER,
-        });
-    },
-    toggleTodo: (index: number) => {
-        dispatch({ type: TodoActionTypes.TOGGLE_TODO, id: index });
-    },
-});
+const mapDispatchToProps = {
+    addTodo, toggleTodo, setVisibilityFilter, removeTodo
+};
 
 
 class TodoApp extends React.Component<any, any> {
@@ -82,7 +58,7 @@ class TodoApp extends React.Component<any, any> {
                     <AddTodo
                         key="addTodo"
                         onAddClick={(text: string) => {
-                        this.props.addTodo(nextTodoId++, text); }}
+                        this.props.addTodo(text); }}
                     />
                     <TodoList
                         key="todoList"
