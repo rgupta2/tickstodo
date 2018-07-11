@@ -2,11 +2,12 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { ITodo } from "../entities/ITodo";
-import { ITodoState } from "../reducers/TodoAppReducer";
+import { ITodoState } from "../ducks/TodoAppReducer";
 import { AddTodo } from "./AddTodo";
 import * as styles from "./css/styles.css";
 import { TodoList } from "./TodoList";
-import { addTodo, toggleTodo, setVisibilityFilter, removeTodo } from "../actions/TodoAction";
+import { addTodo, toggleTodo, removeTodo } from "../ducks/Todo";
+import { setVisibilityFilter } from "../ducks/filter";
 
 import {FilterNavigation} from "./FilterNavigation";
 

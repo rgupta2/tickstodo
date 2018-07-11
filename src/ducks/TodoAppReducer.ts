@@ -1,7 +1,7 @@
 import { Reducer, combineReducers } from "redux";
 import { ITodo } from "../entities/ITodo";
-import todoListReducer from './TodoListReducer';
-import filterReducer from "./FilterReducer";
+import { todosReducer } from './Todo';
+import { visibilityFilterReducer } from "./filter";
 
 
 export interface ITodoState {
@@ -11,6 +11,6 @@ export interface ITodoState {
 
 
 export const todoAppReducer: Reducer<ITodoState> = combineReducers({
-        todos: todoListReducer,
-        visibilityFilter: filterReducer
+        todos: todosReducer,
+        visibilityFilter: visibilityFilterReducer
     });

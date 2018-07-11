@@ -1,6 +1,6 @@
 
 import { createStore } from "redux";
-import { todoAppReducer } from "../reducers/TodoAppReducer";
+import { todoAppReducer } from "../ducks/TodoAppReducer";
 
 let store = createStore(
     todoAppReducer,
