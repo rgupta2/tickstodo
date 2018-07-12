@@ -1,7 +1,7 @@
 
 import actionCreatorFactory from "typescript-fsa";
 import { reducerWithInitialState } from "typescript-fsa-reducers";
-import { ITodo } from "../entities/ITodo";
+import ITodo from "../entities/ITodo";
 
 const actionCreator = actionCreatorFactory();
 
@@ -14,6 +14,7 @@ export const FetchTodoAction = actionCreator.async<void, ITodo[]>("FETCH_TODO");
 
 const INITIAL_STATE: ITodo[] = [];
 
+
 const toggleIfIdMatches = (todo: ITodo, id: number) => {
     if (todo.id !== id) {
         return todo;
@@ -22,11 +23,6 @@ const toggleIfIdMatches = (todo: ITodo, id: number) => {
     return {
         ...todo, completed: !todo.completed,
     };
-};
-
-const test1 = (todos: ITodo[]) => {
-    console.log("===test1=====", todos);
-    return todos;
 };
 
 export const todosReducer = reducerWithInitialState(INITIAL_STATE)
@@ -39,4 +35,4 @@ export const todosReducer = reducerWithInitialState(INITIAL_STATE)
     )
     .case(RemoveTodoAction.done, (state, payload) => (state.filter((todo) => todo.id !== payload.result.id)))
     .case(ToggleTodoAction.done, (state, payload) => (state.map((todo) => toggleIfIdMatches(todo, payload.result.id))))
-    .case(FetchTodoAction.done, (state, payload) => (test1((payload.result || {} ) && payload.result)));
+    .case(FetchTodoAction.done, (state, payload) => (payload.result));

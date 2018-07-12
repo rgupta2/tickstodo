@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { setVisibilityFilter } from "../ducks/filter";
 import { AddTodoAction, FetchTodoAction, RemoveTodoAction, ToggleTodoAction } from "../ducks/todo";
 import { ITodoState } from "../ducks/TodoAppReducer";
-import { ITodo } from "../entities/ITodo";
+import ITodo from "../entities/ITodo";
 import { AddTodo } from "./AddTodo";
 import * as styles from "./css/styles.css";
 import { TodoList } from "./TodoList";

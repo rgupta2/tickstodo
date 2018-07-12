@@ -1,5 +1,5 @@
 import { combineReducers, Reducer } from "redux";
-import { ITodo } from "../entities/ITodo";
+import ITodo from "../entities/ITodo";
 import { visibilityFilterReducer } from "./filter";
 import { todosReducer } from "./todo";
 

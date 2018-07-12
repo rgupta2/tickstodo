@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ITodo } from "../entities/ITodo";
+import ITodo from "../entities/ITodo";
 import * as styles from "./css/styles.css";
 import { TodoItem } from "./TodoItem";
 
