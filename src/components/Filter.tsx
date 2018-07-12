@@ -6,9 +6,10 @@ interface IProps {
     filter: string;
     currentFilter: string;
     onLinkClick: Function;
+    children: any;
 }
 
-export const Filter = (props: any) => {
+export const Filter = (props: IProps) => {
     if (props.filter === props.currentFilter) {
         return (
             <a
