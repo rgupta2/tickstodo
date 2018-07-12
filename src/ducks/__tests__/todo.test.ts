@@ -1,6 +1,6 @@
 // import { deepFreeze } from "deep-freeze"; // TODO: Deep freeze package not working in Typescript
-import ITodo from "../entities/ITodo";
-import { AddTodoAction, FetchTodoAction, RemoveTodoAction, todosReducer, ToggleTodoAction } from "./todo";
+import ITodo from "../../entities/ITodo";
+import { AddTodoAction, FetchTodoAction, RemoveTodoAction, todosReducer, ToggleTodoAction } from "../todo";
 
 
 describe("todoListReducer should work", () => {

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterNavigation renders correctly 1`] = `
+<div>
+  <div>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      ALL
+    </a>
+  </div>
+  <div>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      ACTIVE
+    </a>
+  </div>
+  <div>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      COMPLETED
+    </a>
+  </div>
+</div>
+`;

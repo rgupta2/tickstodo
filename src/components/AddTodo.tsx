@@ -28,7 +28,7 @@ export class AddTodo extends React.Component<IProps, any> {
                     }
                 }
                 }>
-                    <FontAwesomeIcon key="addtodoicon" icon="plus"/>
+                    <FontAwesomeIcon icon="plus"/>
                 </button>
             </div>);
     }

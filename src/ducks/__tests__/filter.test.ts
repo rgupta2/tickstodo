@@ -1,5 +1,5 @@
 // import { deepFreeze } from "deep-freeze"; // TODO: Deep freeze package not working in Typescript
-import { setVisibilityFilter, visibilityFilterReducer } from "./filter";
+import { setVisibilityFilter, visibilityFilterReducer } from "../filter";
 
 
 describe("visibilityFilterReducer should work", () => {
