@@ -2,8 +2,11 @@
 
 exports[`renders correctly 1`] = `
 <div>
-  <input />
+  <input
+    data-test-id="add-todo-input"
+  />
   <button
+    data-testid="add-todo-btn"
     onClick={[Function]}
     type="submit"
   >

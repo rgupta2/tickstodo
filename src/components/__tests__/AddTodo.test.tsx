@@ -14,8 +14,13 @@ it("renders correctly", () => {
 
 
 it("renders button", () => {
-    const { container } = render(<AddTodo onAddClick={jest.fn}/>);
-    // expect(container.firstChild).to(<FontAwesomeIcon icon="plus"/>);
-    // .contains);
-    expect(container).toBeTruthy();
+    const props = {
+        onAddClick: jest.fn(),
+    }
+    const { getByTestId, queryByTestId, container } = render(<AddTodo onAddClick={props.onAddClick}/>);
+
+    expect(queryByTestId("add-todo-input")).toBeNull();
+
+    fireEvent.click(getByTestId("add-todo-btn"));
+    expect(props.onAddClick).toHaveBeenCalledTimes(0);
 });

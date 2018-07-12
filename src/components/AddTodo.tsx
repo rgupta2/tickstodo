@@ -19,15 +19,17 @@ export class AddTodo extends React.Component<IProps, any> {
                     className={styles.tInputText}
                     ref={(node) => {
                         input = node;
-                    }}/>
+                    }}
+                    data-test-id="add-todo-input"/>
                 <button
                     className={styles.tInputSubmit}
                     type="submit" onClick={() => {
-                    if (input.value) {
-                        this.props.onAddClick(input.value);
-                    }
-                }
-                }>
+                        if (input.value) {
+                            this.props.onAddClick(input.value);
+                        }
+                    }}
+                    data-testid="add-todo-btn"
+                >
                     <FontAwesomeIcon icon="plus"/>
                 </button>
             </div>);
