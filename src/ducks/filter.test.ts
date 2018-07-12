@@ -20,5 +20,5 @@ describe("visibilityFilterReducer should work", () => {
         // create a payload
         expect(outputState).toEqual(expectedState);
     });
-}
+},
 );

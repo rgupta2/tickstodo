@@ -10,7 +10,7 @@ interface IProps {
     onAddClick: Function;
 }
 
-export class AddTodo extends React.Component<any, any> {
+export class AddTodo extends React.Component<IProps, any> {
     public render() {
         let input: any;
         return (

@@ -1,4 +1,4 @@
-import actionCreatorFactory from 'typescript-fsa';
+import actionCreatorFactory from "typescript-fsa";
 import { reducerWithInitialState } from "typescript-fsa-reducers";
 
 const actionCreator = actionCreatorFactory();

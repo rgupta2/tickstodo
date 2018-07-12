@@ -44,7 +44,9 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
+    "redux-observable": "^1.0.0",
     "redux-thunk": "^2.3.0",
+    "rxjs": "^6.2.1",
     "ts-jest": "^23.0.0",
     "ts-lint": "^4.5.1",
     "typescript-fsa": "^3.0.0-beta-2",
@@ -52,6 +54,7 @@
     "webpack": "^4.12.2"
   },
   "devDependencies": {
+    "@types/es6-promise": "^3.3.0",
     "awesome-typescript-loader": "^5.2.0",
     "css-loader": "^0.28.11",
     "html-loader": "^0.5.5",

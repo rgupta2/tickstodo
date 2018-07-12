@@ -1,13 +1,13 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { ITodo } from "../entities/ITodo";
+import { setVisibilityFilter } from "../ducks/filter";
+import { AddTodoAction, FetchTodoAction, RemoveTodoAction, ToggleTodoAction } from "../ducks/todo";
 import { ITodoState } from "../ducks/TodoAppReducer";
+import { ITodo } from "../entities/ITodo";
 import { AddTodo } from "./AddTodo";
 import * as styles from "./css/styles.css";
 import { TodoList } from "./TodoList";
-import { addTodo, loadTodo, toggleTodo, removeTodo } from "../ducks/Todo";
-import { setVisibilityFilter } from "../ducks/filter";
 
 import {FilterNavigation} from "./FilterNavigation";
 
@@ -33,17 +33,21 @@ const mapStateToProps = (state: ITodoState) => {
         todos: getVisibleTodos(
             state.todos,
             state.visibilityFilter),
-        visibilityFilter: state.visibilityFilter
+        visibilityFilter: state.visibilityFilter,
     };
 };
 
 const mapDispatchToProps = {
-    loadTodo, addTodo, toggleTodo, setVisibilityFilter, removeTodo
+    addTodo: AddTodoAction.started,
+    loadTodo: FetchTodoAction.started,
+    removeTodo: RemoveTodoAction.started,
+    setVisibilityFilter,
+    toggleTodo: ToggleTodoAction.started,
 };
 
 
 class TodoApp extends React.Component<any, any> {
-    componentDidMount() {
+    public componentDidMount() {
         this.props.loadTodo();
     }
 
@@ -55,22 +59,19 @@ class TodoApp extends React.Component<any, any> {
                         TICKS TO DO
                     </div>
                     <FilterNavigation
-                        key={"filternavigation"}
                         visibilityFilter={this.props.visibilityFilter}
                         onFilterClick={(filter: string) => {this.props.setVisibilityFilter(filter); }}
                     />
                 </div>
                 <div className={styles.reminderContainer}>
                     <AddTodo
-                        key={"addTodo"}
                         onAddClick={(text: string) => {
-                        this.props.addTodo(text); }}
+                        this.props.addTodo({text}); }}
                     />
                     <TodoList
-                        key={"todoList"}
                         todos={this.props.todos}
-                        onTodoClick={(index: number) => { this.props.toggleTodo(index); }}
-                        onTrashClick={(index: number) => { this.props.removeTodo(index); }}/>
+                        onTodoClick={(id: number) => { this.props.toggleTodo({id}); }}
+                        onTrashClick={(id: number) => { this.props.removeTodo({id}); }}/>
                 </div>
             </div>
         );

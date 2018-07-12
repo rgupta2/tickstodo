@@ -7,7 +7,7 @@ interface IProps {
     onFilterClick: Function;
 }
 
-export class FilterNavigation extends React.Component<any, any> {
+export class FilterNavigation extends React.Component<IProps, any> {
     public shouldComponentUpdate(nextProps: IProps) {
         return this.props.visibilityFilter !== nextProps.visibilityFilter;
     }
@@ -18,9 +18,8 @@ export class FilterNavigation extends React.Component<any, any> {
     return (
         <div className={styles.filterNav}>
             {filters.map((filter: string) => { return (
-            <div className={styles.filterNavItem}>
+            <div key={filter} className={styles.filterNavItem}>
                 <Filter
-                    key={'F' + filter}
                     filter={filter}
                     currentFilter={this.props.visibilityFilter}
                     onLinkClick={this.props.onFilterClick}>
