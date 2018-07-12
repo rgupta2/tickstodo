@@ -34,8 +34,10 @@ export class TodoItem extends React.Component<any, any> {
                     {this.props.text}
                 </div>);
         } else {
-            return (<div className={textClassName} onClick={this.props.onItemClick}>
-                <span className={styles.iconBox}><FontAwesomeIcon icon="square"/></span>
+            return (<div className={textClassName} >
+                <span className={styles.iconBox} onClick={this.props.onItemClick}>
+                    <FontAwesomeIcon icon="square" />
+                </span>
                 {this.props.text}
                 <span className={styles.iconTrash} onClick={this.props.onTrashClick}>
                     <FontAwesomeIcon icon="trash"/>
