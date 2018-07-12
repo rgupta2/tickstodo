@@ -6,7 +6,7 @@ import { ITodoState } from "../ducks/TodoAppReducer";
 import { AddTodo } from "./AddTodo";
 import * as styles from "./css/styles.css";
 import { TodoList } from "./TodoList";
-import { addTodo, toggleTodo, removeTodo } from "../ducks/Todo";
+import { addTodo, loadTodo, toggleTodo, removeTodo } from "../ducks/Todo";
 import { setVisibilityFilter } from "../ducks/filter";
 
 import {FilterNavigation} from "./FilterNavigation";
@@ -38,11 +38,15 @@ const mapStateToProps = (state: ITodoState) => {
 };
 
 const mapDispatchToProps = {
-    addTodo, toggleTodo, setVisibilityFilter, removeTodo
+    loadTodo, addTodo, toggleTodo, setVisibilityFilter, removeTodo
 };
 
 
 class TodoApp extends React.Component<any, any> {
+    componentDidMount() {
+        this.props.loadTodo();
+    }
+
     public render() {
         return (
             <div>
@@ -51,18 +55,19 @@ class TodoApp extends React.Component<any, any> {
                         TICKS TO DO
                     </div>
                     <FilterNavigation
+                        key={"filternavigation"}
                         visibilityFilter={this.props.visibilityFilter}
                         onFilterClick={(filter: string) => {this.props.setVisibilityFilter(filter); }}
                     />
                 </div>
                 <div className={styles.reminderContainer}>
                     <AddTodo
-                        key="addTodo"
+                        key={"addTodo"}
                         onAddClick={(text: string) => {
                         this.props.addTodo(text); }}
                     />
                     <TodoList
-                        key="todoList"
+                        key={"todoList"}
                         todos={this.props.todos}
                         onTodoClick={(index: number) => { this.props.toggleTodo(index); }}
                         onTrashClick={(index: number) => { this.props.removeTodo(index); }}/>

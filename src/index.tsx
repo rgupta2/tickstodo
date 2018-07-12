@@ -5,7 +5,7 @@ import TodoApp from "./components/TodoApp";
 import store from "./store/store";
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider key="provider" store={store}>
         <TodoApp key="todoapp" />
     </Provider>,
     document.getElementById("root"),

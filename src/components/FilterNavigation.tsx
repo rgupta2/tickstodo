@@ -20,7 +20,7 @@ export class FilterNavigation extends React.Component<any, any> {
             {filters.map((filter: string) => { return (
             <div className={styles.filterNavItem}>
                 <Filter
-                    key={filter}
+                    key={'F' + filter}
                     filter={filter}
                     currentFilter={this.props.visibilityFilter}
                     onLinkClick={this.props.onFilterClick}>

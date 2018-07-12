@@ -9,9 +9,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
-    sourceMapFilename: 'maps/[file].map'
+    // sourceMapFilename: 'maps/[file].map'
   },
-  devtool: 'source-map',
+  // devtool: 'source-map',
   resolve: {
     extensions: ['.css', '.js', '.json', '.ts', '.tsx'],
   },
