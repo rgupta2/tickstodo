@@ -4,7 +4,7 @@ import * as React from "react";
 import { AddTodo } from "./AddTodo";
 
 it("renders button", () => {
-    const result = shallow(<AddTodo />)
+    const result = shallow(<AddTodo onAddClick={jest.fn}/>)
         .contains(<FontAwesomeIcon icon="plus"/>);
     expect(result).toBeTruthy();
 });
