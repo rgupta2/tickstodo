@@ -13,6 +13,11 @@ const PATH = {
     TOGGLE: "/toggle",
 };
 
+// TODO: move this to duck files
+// TODO: rename duck to store
+// TODO: create mapper files
+// TODO: try out Visual Studio
+// TODO: checkout prettier linting
 
 export const FetchTodoEpic: Epic = (actions$) =>
     actions$.pipe(

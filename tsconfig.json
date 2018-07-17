@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "outDir": "./dist/",
+    "moduleResolution": "node",
     "noImplicitAny": true,
-    "sourceMap": true,
+    "module": "es6",
     "target": "es5",
-    "lib": [ "es2016", "dom" ]
+    "jsx": "react",
+    "lib": ["es5", "es2015", "dom", "scripthost"],
+    "allowJs": true
   }
 }

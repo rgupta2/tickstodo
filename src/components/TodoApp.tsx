@@ -1,6 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
+import { FormattedMessage } from "react-intl";
 import { setVisibilityFilter } from "../ducks/filter";
 import { AddTodoAction, FetchTodoAction, RemoveTodoAction, ToggleTodoAction } from "../ducks/todo";
 import { ITodoState } from "../ducks/TodoAppReducer";
@@ -8,6 +9,7 @@ import ITodo from "../entities/ITodo";
 import { AddTodo } from "./AddTodo";
 import * as styles from "./css/styles.css";
 import { TodoList } from "./TodoList";
+
 
 import {FilterNavigation} from "./FilterNavigation";
 
@@ -56,6 +58,7 @@ class TodoApp extends React.Component<any, any> {
             <div>
                 <div className={styles.pageHeader}>
                     <div className={styles.filterNavItem}>
+                        <FormattedMessage id="app.string" />
                         TICKS TO DO
                     </div>
                     <FilterNavigation

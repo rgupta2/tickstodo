@@ -16,7 +16,7 @@ it("renders correctly", () => {
 it("renders button", () => {
     const props = {
         onAddClick: jest.fn(),
-    }
+    };
     const { getByTestId, queryByTestId, container } = render(<AddTodo onAddClick={props.onAddClick}/>);
 
     expect(queryByTestId("add-todo-input")).toBeNull();
